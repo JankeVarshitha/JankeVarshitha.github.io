@@ -68,6 +68,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            min-width: 40px;
         }
 
         nav ul {
@@ -88,14 +89,27 @@
             transform: translateY(-2px);
         }
 
+        /* Neural Network Canvas */
+        #neural-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
         /* Hero Section */
         .hero {
+            position: relative;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            padding: 80px 0;
+            padding: 80px 0 40px 0;
             animation: fadeInUp 0.8s ease;
+            z-index: 2;
         }
 
         .hero-content h1 {
@@ -230,14 +244,14 @@
 
         /* Sections */
         section {
-            padding: 80px 0;
+            padding: 60px 0;
             animation: fadeInUp 0.8s ease;
         }
 
-        section:nth-of-type(2) { animation-delay: 0.1s; }
-        section:nth-of-type(3) { animation-delay: 0.2s; }
-        section:nth-of-type(4) { animation-delay: 0.3s; }
-        section:nth-of-type(5) { animation-delay: 0.4s; }
+        section:nth-of-type(3) { animation-delay: 0.1s; }
+        section:nth-of-type(4) { animation-delay: 0.2s; }
+        section:nth-of-type(5) { animation-delay: 0.3s; }
+        section:nth-of-type(6) { animation-delay: 0.4s; }
 
         h2 {
             font-size: 2.5em;
@@ -646,7 +660,7 @@
 
             .hero {
                 grid-template-columns: 1fr;
-                padding: 60px 0;
+                padding: 60px 0 40px 0;
                 gap: 40px;
             }
 
@@ -703,7 +717,7 @@
             }
 
             .hero {
-                padding: 40px 0;
+                padding: 40px 0 30px 0;
             }
 
             .hero-content h1 {
@@ -719,7 +733,7 @@
             }
 
             section {
-                padding: 60px 0;
+                padding: 50px 0;
             }
 
             .profile-frame {
@@ -742,7 +756,7 @@
     <div class="container">
         <!-- Navigation -->
         <nav>
-            <div class="logo">JV</div>
+            <div class="logo"></div>
             <ul>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -750,6 +764,9 @@
                 <li><a href="#certifications">Certifications</a></li>
             </ul>
         </nav>
+
+        <!-- Canvas for Neural Network Animation -->
+        <canvas id="neural-canvas"></canvas>
 
         <!-- Hero Section -->
         <section class="hero">
@@ -763,7 +780,7 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#" class="btn btn-secondary" download>Download CV</a>
+                    <a href="#" class="btn btn-secondary" download>Download Resume</a>
                 </div>
                 <div class="social-links">
                     <a href="https://github.com/JankeVarshitha" class="social-link" target="_blank" title="GitHub">🔗</a>
@@ -789,14 +806,14 @@
                 <div class="skill-tag">Python</div>
                 <div class="skill-tag">TensorFlow</div>
                 <div class="skill-tag">PyTorch</div>
-                <div class="skill-tag">AWS ML</div>
+                <div class="skill-tag">AWS</div>
                 <div class="skill-tag">Machine Learning</div>
                 <div class="skill-tag">Data Science</div>
                 <div class="skill-tag">Neural Networks</div>
-                <div class="skill-tag">Reinforcement Learning</div>
+                <div class="skill-tag">RAG</div>
+                <div class="skill-tag">LLMOps</div>
                 <div class="skill-tag">Computer Vision</div>
                 <div class="skill-tag">LLMs</div>
-                <div class="skill-tag">MLOps</div>
             </div>
         </section>
 
@@ -927,7 +944,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2024-2026 Janke Varshitha. All rights reserved.</p>
+            <p>&copy; 2026 Janke Varshitha. All rights reserved.</p>
             <p>AI Engineer | Building Intelligent Systems</p>
         </footer>
     </div>
@@ -981,6 +998,97 @@
     </div>
 
     <script>
+        // Neural Network Animation
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        const heroSection = document.querySelector('.hero');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = heroSection.offsetHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = 50;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 3 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                this.x = Math.max(0, Math.min(canvas.width, this.x));
+                this.y = Math.max(0, Math.min(canvas.height, this.y));
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.6)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            drawConnections();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Stop animation after hero section
+        window.addEventListener('scroll', () => {
+            const rect = heroSection.getBoundingClientRect();
+            if (rect.bottom < 0) {
+                canvas.style.display = 'none';
+            } else {
+                canvas.style.display = 'block';
+            }
+        });
+
         // AWS Certification Modal
         const awsModal = document.getElementById('awsModal');
         const awsCertBtn = document.getElementById('awsCertBtn');
