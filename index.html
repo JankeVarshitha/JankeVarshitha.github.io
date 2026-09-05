@@ -1,5 +1,3 @@
-name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/blob/main/index.html
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -286,6 +284,7 @@ name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/b
             margin-bottom: 15px;
             border-left: 3px solid #9632c8;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .cert-item:hover {
@@ -302,6 +301,105 @@ name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/b
         .cert-subtitle {
             color: #b0b0b0;
             font-size: 0.85em;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin: 50px auto;
+            padding: 40px;
+            border: 1px solid rgba(0, 100, 200, 0.3);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            animation: slideUp 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal h3 {
+            font-size: 1.5em;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .cert-details {
+            color: #d0d0d0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .cert-details strong {
+            color: #00d4ff;
+        }
+
+        .cert-details ul {
+            list-style-position: inside;
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        .cert-details li {
+            margin-bottom: 10px;
+            color: #b0b0b0;
+        }
+
+        .validation-box {
+            background: rgba(0, 100, 200, 0.1);
+            border: 1px solid rgba(0, 100, 200, 0.4);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+
+        .validation-box strong {
+            color: #00d4ff;
+        }
+
+        .validation-box a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .validation-box a:hover {
+            text-decoration: underline;
+        }
+
+        .close-btn {
+            color: #b0b0b0;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #00d4ff;
         }
 
         /* Contact */
@@ -366,6 +464,26 @@ name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/b
             }
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
@@ -396,6 +514,12 @@ name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/b
                 padding: 10px 15px;
                 font-size: 0.85em;
             }
+
+            .modal-content {
+                width: 95%;
+                margin: 100px auto;
+                padding: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -419,6 +543,11 @@ name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/b
                 width: 100px;
                 height: 100px;
                 font-size: 50px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 150px auto;
             }
         }
     </style>
@@ -563,9 +692,9 @@ name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/b
         <!-- Certifications & Publications -->
         <section>
             <h2>Certifications & Publications</h2>
-            <div class="cert-item">
+            <div class="cert-item" id="awsCertBtn">
                 <div class="cert-title">🏆 AWS Certified ML Engineer</div>
-                <div class="cert-subtitle">Amazon Web Services - Machine Learning Specialization</div>
+                <div class="cert-subtitle">Click to view certification details</div>
             </div>
             <div class="cert-item">
                 <div class="cert-title">📰 Prediction Of Used Car Prices Using Artificial Neural Networks And Machine Learning</div>
@@ -586,5 +715,62 @@ name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/b
             <p>AI Engineer | Building Intelligent Systems</p>
         </footer>
     </div>
+
+    <!-- AWS Certification Modal -->
+    <div id="awsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h3>AWS Certified Machine Learning - Specialty</h3>
+                <p class="modal-subtitle">Professional Level Certification</p>
+            </div>
+            
+            <div class="cert-details">
+                <p><strong>Issue Date:</strong> May 9, 2025</p>
+                <p><strong>Expiration Date:</strong> May 9, 2028</p>
+            </div>
+
+            <div class="cert-details">
+                <strong>This certification validates my skills in:</strong>
+                <ul>
+                    <li>Designing ML solutions on AWS</li>
+                    <li>Implementing & optimizing data engineering pipelines</li>
+                    <li>Selecting appropriate algorithms for different business problems</li>
+                    <li>Deploying & monitoring ML models at scale</li>
+                </ul>
+            </div>
+
+            <div class="cert-details">
+                <p>The journey involved deep-diving into services like <strong>SageMaker</strong>, <strong>Comprehend</strong>, <strong>Rekognition</strong>, and <strong>Personalize</strong>, while strengthening my understanding of data preprocessing, feature engineering, and model evaluation techniques.</p>
+                <p style="margin-top: 15px;">Looking forward to applying these skills to solve real-world problems and continue growing in the ML space.</p>
+            </div>
+
+            <div class="validation-box">
+                <p><strong>VALIDATION NUMBER:</strong> 5a08dd5a1468448780d6409126e0c304</p>
+                <p><strong>VALIDATE AT:</strong> <a href="https://aws.amazon.com/verification" target="_blank">https://aws.amazon.com/verification</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AWS Certification Modal
+        const awsModal = document.getElementById('awsModal');
+        const awsCertBtn = document.getElementById('awsCertBtn');
+        const closeBtn = document.querySelector('.close-btn');
+
+        awsCertBtn.addEventListener('click', () => {
+            awsModal.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            awsModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === awsModal) {
+                awsModal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
