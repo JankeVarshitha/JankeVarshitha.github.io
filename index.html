@@ -1,1 +1,590 @@
+name=index.html url=https://github.com/JankeVarshitha/JankeVarshitha.github.io/blob/main/index.html
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janke Varshitha - AI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 100, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(150, 50, 200, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0064c8 0%, #9632c8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 60px;
+            box-shadow: 0 0 30px rgba(0, 100, 200, 0.3);
+            border: 2px solid rgba(0, 100, 200, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(150, 50, 200, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff 0%, #9632c8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .bio {
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(0, 100, 200, 0.1);
+            border: 1px solid rgba(0, 100, 200, 0.3);
+            border-radius: 8px;
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .social-link:hover {
+            background: rgba(0, 100, 200, 0.2);
+            border-color: rgba(0, 100, 200, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 100, 200, 0.2);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 100, 200, 0.3);
+            display: inline-block;
+        }
+
+        /* Skills */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .skill-tag {
+            padding: 12px 18px;
+            background: linear-gradient(135deg, rgba(0, 100, 200, 0.2) 0%, rgba(150, 50, 200, 0.2) 100%);
+            border: 1px solid rgba(0, 100, 200, 0.4);
+            border-radius: 20px;
+            text-align: center;
+            color: #00d4ff;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(0, 100, 200, 0.4) 0%, rgba(150, 50, 200, 0.4) 100%);
+            border-color: rgba(0, 100, 200, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 100, 200, 0.3);
+        }
+
+        /* Experience */
+        .experience-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #00d4ff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .exp-title {
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .exp-subtitle {
+            color: #b0b0b0;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .exp-description {
+            color: #d0d0d0;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 100, 200, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 100, 200, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 100, 200, 0.2);
+        }
+
+        .project-name {
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .tech-badge {
+            padding: 4px 10px;
+            background: rgba(150, 50, 200, 0.2);
+            border: 1px solid rgba(150, 50, 200, 0.4);
+            border-radius: 12px;
+            font-size: 0.8em;
+            color: #c8a2ff;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 15px;
+            background: rgba(0, 100, 200, 0.2);
+            border: 1px solid rgba(0, 100, 200, 0.4);
+            border-radius: 5px;
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            width: fit-content;
+        }
+
+        .project-link:hover {
+            background: rgba(0, 100, 200, 0.4);
+            border-color: rgba(0, 100, 200, 0.8);
+        }
+
+        /* Certifications & Publications */
+        .cert-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 3px solid #9632c8;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(5px);
+        }
+
+        .cert-title {
+            font-weight: 600;
+            color: #c8a2ff;
+            margin-bottom: 5px;
+        }
+
+        .cert-subtitle {
+            color: #b0b0b0;
+            font-size: 0.85em;
+        }
+
+        /* Contact */
+        .contact-section {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 100, 200, 0.05);
+            border: 1px solid rgba(0, 100, 200, 0.2);
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .contact-cta {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #0064c8 0%, #9632c8 100%);
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1em;
+        }
+
+        .contact-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 100, 200, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            border-top: 1px solid rgba(0, 100, 200, 0.2);
+            font-size: 0.9em;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .tagline {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .social-links {
+                gap: 10px;
+            }
+
+            .social-link {
+                padding: 10px 15px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            header {
+                margin-bottom: 40px;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="profile-img">🤖</div>
+            <h1>Janke Varshitha</h1>
+            <p class="tagline">AI Engineer | Conversational AI Specialist</p>
+            <p class="bio">
+                Passionate about building intelligent systems with 4+ years of ML/AI experience. 
+                Currently working on conversational AI solutions. AWS Certified ML Engineer with expertise 
+                in deep learning, NLP, and AI-driven applications.
+            </p>
+            
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://github.com/JankeVarshitha" class="social-link" target="_blank">
+                    <span>🔗</span> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/janke-varshitha/" class="social-link" target="_blank">
+                    <span>💼</span> LinkedIn
+                </a>
+                <a href="mailto:varshithareddyjanke@gmail.com" class="social-link">
+                    <span>✉️</span> Email
+                </a>
+            </div>
+        </header>
+
+        <!-- Skills -->
+        <section>
+            <h2>Skills & Expertise</h2>
+            <div class="skills">
+                <div class="skill-tag">Conversational AI</div>
+                <div class="skill-tag">Deep Learning</div>
+                <div class="skill-tag">NLP</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">TensorFlow</div>
+                <div class="skill-tag">PyTorch</div>
+                <div class="skill-tag">AWS ML</div>
+                <div class="skill-tag">Machine Learning</div>
+                <div class="skill-tag">Data Science</div>
+                <div class="skill-tag">Neural Networks</div>
+                <div class="skill-tag">Reinforcement Learning</div>
+                <div class="skill-tag">Computer Vision</div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section>
+            <h2>Current Role</h2>
+            <div class="experience-item">
+                <div class="exp-title">AI Engineer - Conversational AI</div>
+                <div class="exp-subtitle">Currently Employed</div>
+                <div class="exp-description">
+                    Designing and developing advanced conversational AI systems. Building intelligent dialogue systems 
+                    that understand context, generate natural responses, and provide seamless user interactions.
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-name">Machine Learning & LLM</div>
+                    <div class="project-description">
+                        Exploring advanced machine learning concepts and large language models implementations.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">LLM</span>
+                    </div>
+                    <a href="https://github.com/JankeVarshitha/Machine_learning_llm" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">RL Projects</div>
+                    <div class="project-description">
+                        Code implementations of games and algorithms using Reinforcement Learning techniques.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Reinforcement Learning</span>
+                        <span class="tech-badge">Python</span>
+                    </div>
+                    <a href="https://github.com/JankeVarshitha/RL_projects" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">Skin Cancer Detection</div>
+                    <div class="project-description">
+                        Deep learning model for automated skin cancer detection using image classification.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Computer Vision</span>
+                        <span class="tech-badge">Deep Learning</span>
+                    </div>
+                    <a href="https://github.com/JankeVarshitha/Skin_cancer_detection" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">Intrusion Detection System</div>
+                    <div class="project-description">
+                        WEKA-based intrusion detection system for network security applications.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">WEKA</span>
+                        <span class="tech-badge">Security</span>
+                    </div>
+                    <a href="https://github.com/JankeVarshitha/Intrusion-Detection-System-using-WEKA" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">Customer Data Analysis</div>
+                    <div class="project-description">
+                        Data analysis and machine learning models for customer insights and prediction.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">ML</span>
+                        <span class="tech-badge">Data Analysis</span>
+                    </div>
+                    <a href="https://github.com/JankeVarshitha/Customerdata" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">GCP Gen AI Hackathon</div>
+                    <div class="project-description">
+                        Generative AI project built for the GCP Gen AI Hackathon competition.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Generative AI</span>
+                        <span class="tech-badge">GCP</span>
+                    </div>
+                    <a href="https://github.com/JankeVarshitha/GCP-GEN-AI-Hackathon" class="project-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Publications -->
+        <section>
+            <h2>Certifications & Publications</h2>
+            <div class="cert-item">
+                <div class="cert-title">🏆 AWS Certified ML Engineer</div>
+                <div class="cert-subtitle">Amazon Web Services - Machine Learning Specialization</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-title">📰 Prediction Of Used Car Prices Using Artificial Neural Networks And Machine Learning</div>
+                <div class="cert-subtitle">Published Research - Applied Deep Learning in Regression Analysis</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2 style="border: none; margin-bottom: 15px;">Let's Connect</h2>
+            <p>Interested in collaborating or discussing AI projects? Feel free to reach out!</p>
+            <a href="mailto:varshithareddyjanke@gmail.com" class="contact-cta">Send Me an Email</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024-2026 Janke Varshitha. All rights reserved.</p>
+            <p>AI Engineer | Building Intelligent Systems</p>
+        </footer>
+    </div>
+</body>
+</html>
